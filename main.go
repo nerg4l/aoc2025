@@ -27,6 +27,8 @@ func main() {
 		d = Day03{}
 	case "4", "04":
 		d = Day04{}
+	case "5", "05":
+		d = Day05{}
 	default:
 		fmt.Fprintf(os.Stderr, "Invalid day argument\n")
 		os.Exit(1)
