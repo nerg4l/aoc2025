@@ -1,20 +1,15 @@
 package main
 
 import (
-	"io"
 	"strings"
 	"testing"
 )
 
 func TestDay05(t *testing.T) {
-	tests := []struct {
-		name  string
-		input io.ReadSeeker
-		want1 string
-		want2 string
-	}{
+	tests := []dayTest{
 		{
 			name: "small",
+			day:  Day05{},
 			input: strings.NewReader(`3-5
 10-14
 16-20
@@ -34,6 +29,7 @@ func TestDay05(t *testing.T) {
 		},
 		{
 			name:  "big",
+			day:   Day05{},
 			input: mayOpen("./day05.input"),
 			want1: `623
 `,
@@ -42,6 +38,6 @@ func TestDay05(t *testing.T) {
 		},
 	}
 	for _, tt := range tests {
-		t.Run(tt.name, dayTester(tt, Day05{}))
+		t.Run(tt.name, dayTester(tt, tt.day))
 	}
 }

@@ -9,6 +9,7 @@ func TestDay01(t *testing.T) {
 	tests := []dayTest{
 		{
 			name: "small",
+			day:  Day01{},
 			input: strings.NewReader(`L68
 L30
 R48
@@ -27,6 +28,7 @@ L82
 		},
 		{
 			name:  "big",
+			day:   Day01{},
 			input: mayOpen("./day01.input"),
 			want1: `982
 `,
@@ -36,6 +38,6 @@ L82
 	}
 
 	for _, tt := range tests {
-		t.Run(tt.name, dayTester(tt, Day01{}))
+		t.Run(tt.name, dayTester(tt, tt.day))
 	}
 }

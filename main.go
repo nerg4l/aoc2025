@@ -33,6 +33,8 @@ func main() {
 		d = Day06{}
 	case "7", "07":
 		d = Day07{}
+	case "8", "08":
+		d = Day08{Pairs: 1000}
 	default:
 		fmt.Fprintf(os.Stderr, "Invalid day argument\n")
 		os.Exit(1)
@@ -138,14 +140,10 @@ import (
 )
 
 func TestDay{{.}}(t *testing.T) {
-	tests := []struct {
-		name  string
-		input io.ReadSeeker
-		want1 string
-		want2 string
-	}{
+	tests := []dayTest{
 		{
 			name: "small",
+			day:   Day{{.}}{},
 			input: strings.NewReader(` + "`" + `
 ` + "`" + `),
 			want1: ` + "`" + `
@@ -155,6 +153,7 @@ func TestDay{{.}}(t *testing.T) {
 		},
 		{
 			name:  "big",
+			day:   Day{{.}}{},
 			input: mayOpen("./day{{.}}.input"),
 			want1: ` + "`" + `
 ` + "`" + `,

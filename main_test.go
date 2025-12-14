@@ -9,6 +9,7 @@ import (
 
 type dayTest struct {
 	name  string
+	day   Day
 	input io.ReadSeeker
 	want1 string
 	want2 string
