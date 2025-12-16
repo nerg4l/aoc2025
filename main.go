@@ -35,6 +35,8 @@ func main() {
 		d = Day07{}
 	case "8", "08":
 		d = Day08{Pairs: 1000}
+	case "9", "09":
+		d = Day09{}
 	default:
 		fmt.Fprintf(os.Stderr, "Invalid day argument\n")
 		os.Exit(1)
@@ -134,7 +136,6 @@ func (Day{{.}}) Segment2(r io.Reader, w io.Writer) error {
 	tmplTest := template.Must(template.New("").Parse(`package main
 
 import (
-	"io"
 	"strings"
 	"testing"
 )
@@ -162,7 +163,7 @@ func TestDay{{.}}(t *testing.T) {
 		},
 	}
 	for _, tt := range tests {
-		t.Run(tt.name, dayTester(tt, Day{{.}}{}))
+		t.Run(tt.name, dayTester(tt, tt.day))
 	}
 }
 `))
