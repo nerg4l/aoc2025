@@ -20,6 +20,10 @@ func (r Rectangle) Area() int {
 		(max(r.A.Y, r.B.Y) - min(r.A.Y, r.B.Y) + 1)
 }
 
+func (r Rectangle) Perimeter() int {
+	return ((r.MaxX() - r.MinX() + 1) + (r.MaxY() - r.MinY()) + 1) * 2
+}
+
 func (r Rectangle) MinX() int {
 	return min(r.A.X, r.B.X)
 }
@@ -109,8 +113,8 @@ func (d Day09) Segment2(r io.Reader, w io.Writer) error {
 		for _, b := range coordinates[i+1:] {
 			r := Rectangle{A: a, B: b}
 
-			perim := ((r.MaxX() - r.MinX()) + (r.MaxY() - r.MinY())) * 2
-			walkedPerim := 0
+			perim := r.Perimeter()
+			walkedPerim := 4 // compensate for starting point on each edge
 
 			for j, k := 0, len(coordinates)-1; j < len(coordinates); j++ {
 				start, end := coordinates[k], coordinates[j]
