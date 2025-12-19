@@ -37,6 +37,8 @@ func main() {
 		d = Day08{Pairs: 1000}
 	case "9", "09":
 		d = Day09{}
+	case "10":
+		d = Day10{}
 	default:
 		fmt.Fprintf(os.Stderr, "Invalid day argument\n")
 		os.Exit(1)
