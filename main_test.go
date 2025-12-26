@@ -20,6 +20,9 @@ func dayTester(tt dayTest, d Day) func(t *testing.T) {
 		if tt.input == nil {
 			t.Skip("Input was not provided")
 		}
+		if c, ok := tt.input.(io.Closer); ok {
+			defer c.Close()
+		}
 
 		var w bytes.Buffer
 		err := d.Segment1(tt.input, &w)
